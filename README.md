@@ -6,3 +6,7 @@ of the Inter-Institutional MSc entitled "Artificial Intelligence" that is organi
 The Department of Digital Systems, School of Informatics and Communication Technologies, 
 of University of Piraeus, and the Institute of Informatics and Telecommunications of NCSR "Demokritos".
 url: "https://msc-ai.iit.demokritos.gr/en".
+
+This project is a web service where a user can calculate the fuel consumption of a certain ship for a specific
+trip by importing the values that specify it.
+
