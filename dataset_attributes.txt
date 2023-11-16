@@ -1,4 +1,3 @@
-ALL                                             263511
 DATETIME                                             0
 AFT DRAFT                                          229
 FORE DRAFT                                         219
@@ -66,4 +65,3 @@ WINDWAVE WAVE HEIGHT                             74376*
 WINDWAVE WAVE DIRECTION                          77805*
 WINDWAVE WAVE LENGTH                             77805*
 WINDWAVE WAVE HEIGHT.1                           77805*
-dtype: int64
