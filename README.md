@@ -7,8 +7,8 @@ The Department of Digital Systems, School of Informatics and Communication Techn
 of University of Piraeus, and the Institute of Informatics and Telecommunications of NCSR "Demokritos".
 url: "https://msc-ai.iit.demokritos.gr/en".
 
-  This project is a web service where a user can calculate the fuel consumption of a certain ship for a specific
-trip by importing the values that specify it. An ML model predicting the main engine's fuel consumption has been fitted to 
+  This project is a web service where a user can calculate the fuel consumption of a certain ship (for a specific
+trip) by importing the values that specify it. An ML model predicting the main engine's fuel consumption has been fitted to 
 hystorical data that consist the dataset.csv (attached). The total number of instaces is 263511 and the
 number of attributes is 65.
 
