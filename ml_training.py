@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.model_selection import GridSearchCV, train_test_split, cross_val_score
 from sklearn import preprocessing
 from sklearn.feature_selection import SelectKBest, mutual_info_regression
 from sklearn.metrics import mean_squared_error
@@ -58,11 +58,11 @@ def svc_regressor():
     svr_reg = SVR(kernel='rbf', verbose=True)
     grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10)
     grid_search.fit(X_train_transformed, y_train)
-    svc_hyp_list = [{grid_search.best_params_['gamma']},
-                    {grid_search.best_params_['C']},
+    svc_hyp_list = [{grid_search.best_params_['C']},
+                    {grid_search.best_params_['gamma']},
                     {grid_search.best_params_['epsilon']}]
-    print(f"The best gamma value is : {grid_search.best_params_['gamma']}")
     print(f"The best C value: {grid_search.best_params_['C']}")
+    print(f"The best gamma value is : {grid_search.best_params_['gamma']}")
     print(f"The best epsilon value: {grid_search.best_params_['epsilon']}")
     return svc_hyp_list
 #svc_regressor()
@@ -93,8 +93,12 @@ def gb_regressor():
 #gb_regressor()
 
 #validate the metrics over cross validation to check svc_regressor consistency
-def cross_val_svc_regressor():
-    pass
+def cross_val_svc_regressor(C, gamma, epsilon):
+    tuned_svc = SVR(kernel='rbf', C=C, gamma=gamma, epsilon=epsilon, random_state=112)
+    scores = cross_val_score(tuned_svc, X, y, cv=10, scoring='mse')
+    print(scores)
+    return scores
+cross_val_svc_regressor(svc_regressor()[0], svc_regressor()[1], svc_regressor()[2])
 
 #validate the metrics over cross validation to check GradientBoosting consistency
 def cross_val_gb_regressor():
