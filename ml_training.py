@@ -41,7 +41,7 @@ X = data.loc[:, data.columns != label]
 #Impute missing values using the mean of each attribute (naive imputing method)
 X = X.fillna(X.mean())
 
-#As a feature selection step we keep the 40 attributes with the highest dependency to label
+#As a feature selection step we may choose to keep the n (40) number of attributes with the highest dependency to label
 #X = SelectKBest(mutual_info_regression, k=40).fit_transform(X, y)
 
 #Splitting in Train and Test (due to sufficent number of instances for training we held out 20% of data for testing)
@@ -98,7 +98,7 @@ def cross_val_svc_regressor(C, gamma, epsilon):
     scores = cross_val_score(tuned_svc, X, y, cv=10, scoring='mse')
     print(scores)
     return scores
-cross_val_svc_regressor(svc_regressor()[0], svc_regressor()[1], svc_regressor()[2])
+#cross_val_svc_regressor(svc_regressor()[0], svc_regressor()[1], svc_regressor()[2])
 
 #validate the metrics over cross validation to check GradientBoosting consistency
 def cross_val_gb_regressor():
