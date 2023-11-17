@@ -2,10 +2,12 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn import preprocessing
+from sklearn.feature_selection import SelectKBest, mutual_info_regression
 from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn.ensemble import HistGradientBoostingRegressor
+
 
 #Read Dataset
 data = pd.read_csv("dataset.csv", sep=";")
@@ -38,6 +40,9 @@ X = data.loc[:, data.columns != label]
 
 #Impute missing values using the mean of each attribute (naive imputing method)
 X = X.fillna(X.mean())
+
+#As a feature selection step we keep the 40 attributes with the highest dependency to label
+#X = SelectKBest(mutual_info_regression, k=40).fit_transform(X, y)
 
 #Splitting in Train and Test (due to sufficent number of instances for training we held out 20% of data for testing)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=112)
