@@ -6,3 +6,5 @@ l2_regularization set to: True
 Cross validation scores with above hyperparameters:
 [14.93631343, 15.58386, 12.86628177, 36.06647914, 14.78576989,
  15.89662374, 14.90552378, 14.6379618, 11.00049996, 8.32913522]
+
+django
