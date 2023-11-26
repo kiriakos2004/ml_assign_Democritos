@@ -45,14 +45,17 @@ X = data.loc[:, data.columns != label]
 X = X.fillna(X.mean())
 
 #find out the 'mean' and 'std' of the different attributes and save it as stats.txt
+#we sill use mean value as default for all inputs that the user doesn't fill in form (or we will not put in form)
 def statistics():
     Statistics = X.describe().loc[['mean', 'std']]
     dict_temp = Statistics.to_dict('split')
     names_list = dict_temp['columns']
     mean_list = dict_temp['data'][0]
+    round_mean_list = [round(num_mean, 2) for num_mean in mean_list]
     std_list = dict_temp['data'][1]
+    round_std_list = [round(num_std, 2) for num_std in std_list]
     l = []
-    l.extend([list(a) for a in zip(mean_list, std_list)])
+    l.extend([list(a) for a in zip(round_mean_list, round_std_list)])
     statistics_dict = dict(zip(names_list, l))
     with open('stats.txt', 'w') as f:
         f.write(str(statistics_dict))
