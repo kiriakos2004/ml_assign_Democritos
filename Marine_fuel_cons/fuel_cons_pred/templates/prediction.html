@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title $}
+home page
+{% endblock $}
+
+{% block page_body %}
+
+<div class="d-flex" id="main_div">
+    <p>the selected duration is: {{duration}}</p>
+</div>
+{% include "partials/footer.html" %}
+{% endblock %}
+

@@ -8,7 +8,29 @@ home page
 {% block page_body %}
 
 <div class="d-flex" id="main_div">
-    <img src="{%static 'images/background.webp'%}" alt="" class = "img-fluid" style="width:100%">
+    <div class="container row align-items-center mx-auto">
+        <br>
+        <div class="row justify-content-md-center">
+            <div id="box_form" style="text-align: center;" class="rounded">
+                <form action="{% url 'prediction' %}" method="post">
+                    {% csrf_token %}
+                    <h2>Please enter the values below</h2>
+                    <label for="duration">Trip duration</label>
+                    <input type="text" class="form-control" id="duration" placeholder="Enter the estimated days of trip">
+                    <label for="speed">Desired Speed</label>
+                    <input type="text" class="form-control" id="speed" placeholder="Enter the desired speed of trip">                    
+                    <label for="aft_draft">Aft draft of ship</label>                    
+                    <input type="text" class="form-control" id="aft_draft" placeholder="Enter the AFT draught in meters">
+                    <label for="fore_draft">Fore draft of ship</label>
+                    <input type="text" class="form-control" id="fore_draft" placeholder="Enter the FORE draught in meters">
+                    <label for="heading">Ship Heading</label>
+                    <input type="text" class="form-control" id="heading" placeholder="Enter the heading in degrees">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block mb-2">Calculate fuel consumption</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% include "partials/footer.html" %}
 {% endblock %}
