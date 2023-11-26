@@ -6,7 +6,10 @@ home page
 {% endblock $}
 
 {% block page_body %}
+
 <div class="d-flex" id="main_div">
-    <h1>Hello world!</h1>
+    <img src="{%static 'images/background.webp'%}" alt="" class = "img-fluid" style="width:100%">
 </div>
+{% include "partials/footer.html" %}
 {% endblock %}
+
