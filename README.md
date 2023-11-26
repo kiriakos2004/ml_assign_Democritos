@@ -14,4 +14,4 @@ number of attributes is 65.
 
 The code has been created with the use of python version 3.9.13. In order to recreate the same working enviroment (and to ensure trouble-free code execusion) it is advised to run under virtual enviroment that should be created with the use of requirements.txt
  
- Two Machine Learning regression algorithms (SVR and GradientBoosting) were used in order to predict a ship's main engine fuel consumption (label = ).
+ Two Machine Learning regression algorithms (SVR and GradientBoosting) were used in order to predict a ship's main engine fuel consumption (label = ME FUEL CONSUMPTION). The other 66 column names (displayed in dataset_attributes.txt) represent the training attributes. 
