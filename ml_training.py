@@ -1,5 +1,9 @@
 import pandas as pd
 import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import seaborn as sns
+import seaborn.objects as so
 from sklearn.model_selection import GridSearchCV, train_test_split, cross_val_score
 from sklearn import preprocessing
 from sklearn.feature_selection import SelectKBest, mutual_info_regression
@@ -40,8 +44,48 @@ X = data.loc[:, data.columns != label]
 #Impute missing values using the mean of each attribute (naive imputing method)
 X = X.fillna(X.mean())
 
-#As a feature selection step we may choose to keep the n (40) number of attributes with the highest dependency to label
-#X = SelectKBest(mutual_info_regression, k=40).fit_transform(X, y)
+#find out the 'mean' and 'std' of the different attributes and save it as stats.txt
+def statistics():
+    Statistics = X.describe().loc[['mean', 'std']]
+    dict_temp = Statistics.to_dict('split')
+    names_list = dict_temp['columns']
+    mean_list = dict_temp['data'][0]
+    std_list = dict_temp['data'][1]
+    l = []
+    l.extend([list(a) for a in zip(mean_list, std_list)])
+    statistics_dict = dict(zip(names_list, l))
+    with open('stats.txt', 'w') as f:
+        f.write(str(statistics_dict))
+    return statistics_dict
+#statistics()
+
+#As a preprocessing step we should visualize data in order to improve insights of dataset
+def vis_attr():
+    attribute = input("Please input one of the attribute titles dispalyed in 'dataset_attributes.txt': ")
+    width = 12
+    height = 6
+    sns.set(rc = {'figure.figsize':(width,height)})
+    sns.lineplot(data=X[attribute], color="#62466B").set(title=f'Lineplot of attribute: {attribute}')
+    sns.set_style("dark")
+    plt.show()
+#vis_attr()
+
+#As a feature selection step we may choose to keep the number of attributes with the highest "mutual information" to label
+def vis_mutual_info():
+    importances = mutual_info_regression(X,y)
+    feat_importances = pd.Series(importances, X.columns[0:len(X.columns)])
+    sorted_feat_importances = feat_importances.sort_values(ascending=False)
+    width = 12
+    height = 14
+    sns.set(rc = {'figure.figsize':(width,height)})
+    sns.set_style("dark")
+    sns.barplot(data=sorted_feat_importances, palette="crest", orient="h").set(title='Mutual info barplot')
+    plt.yticks(size=8)
+    plt.show()
+#vis_mutual_info()    
+
+#Keeping the attributes with the highest "mutual info" based on the observations of the vis_mutual function plot
+#X = SelectKBest(mutual_info_regression, k=54).fit_transform(X, y)
 
 #Splitting in Train and Test (due to sufficent number of instances for training we held out 20% of data for testing)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=112)
@@ -53,9 +97,9 @@ X_test_transformed = scaler.transform(X_test)
 
 #Hyperparameter tuning using GridSearch in the training dataset for SVC regressor
 def svc_regressor():
-    hyperparam_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.5, 1], 'epsilon': [0.01, 0.1, 1]}
+    hyperparam_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.5, 1]}
     svr_reg = SVR(kernel='rbf')
-    grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10, verbose=2, pre_dispatch='2*n_jobs', n_jobs=4)
+    grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10, verbose=2, pre_dispatch='2*n_jobs', n_jobs=-1)
     grid_search.fit(X_train_transformed, y_train)
     svc_hyp_list = [{grid_search.best_params_['C']},
                     {grid_search.best_params_['gamma']},
@@ -64,7 +108,7 @@ def svc_regressor():
     print(f"The best gamma value is : {grid_search.best_params_['gamma']}")
     print(f"The best epsilon value: {grid_search.best_params_['epsilon']}")
     return svc_hyp_list
-svc_regressor()
+#svc_regressor()
 
 #Hyperparameter tuning using GridSearch in the training dataset for GradientBoosting regressor
 def gb_regressor():
