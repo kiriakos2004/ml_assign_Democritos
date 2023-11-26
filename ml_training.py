@@ -44,27 +44,48 @@ X = data.loc[:, data.columns != label]
 #Impute missing values using the mean of each attribute (naive imputing method)
 X = X.fillna(X.mean())
 
-#find out the 'mean' and 'std' of the different attributes to establish insgight about their contribution to the training procedure
-Statistics = X.describe().loc[['mean', 'std']]
-#print(X.describe().loc[['mean', 'std']])
-Statistics_dict = Statistics.to_dict('split')
-names_list = Statistics_dict['columns']
-mean_list = Statistics_dict['data'][0]
-std_list = Statistics_dict['data'][1]
-k = sorted(std_list)
-print(k)
+#find out the 'mean' and 'std' of the different attributes and save it as stats.txt
+def statistics():
+    Statistics = X.describe().loc[['mean', 'std']]
+    dict_temp = Statistics.to_dict('split')
+    names_list = dict_temp['columns']
+    mean_list = dict_temp['data'][0]
+    std_list = dict_temp['data'][1]
+    l = []
+    l.extend([list(a) for a in zip(mean_list, std_list)])
+    statistics_dict = dict(zip(names_list, l))
+    with open('stats.txt', 'w') as f:
+        f.write(str(statistics_dict))
+    return statistics_dict
+#statistics()
 
 #As a preprocessing step we should visualize data in order to improve insights of dataset
-def visual():
+def vis_attr():
     attribute = input("Please input one of the attribute titles dispalyed in 'dataset_attributes.txt': ")
-    sns.displot(data=X, x=attribute, kde=True)
-    #sns.histplot(data=X, x=attribute)
-    plt.title(f'Histplot of attribute: {attribute}')
+    width = 12
+    height = 6
+    sns.set(rc = {'figure.figsize':(width,height)})
+    sns.lineplot(data=X[attribute], color="#62466B").set(title=f'Lineplot of attribute: {attribute}')
+    sns.set_style("dark")
     plt.show()
-#visual()
+#vis_attr()
 
-#As a different feature selection step we may choose to keep the n (40) number of attributes with the highest dependency to label
-#X = SelectKBest(mutual_info_regression, k=40).fit_transform(X, y)
+#As a feature selection step we may choose to keep the number of attributes with the highest "mutual information" to label
+def vis_mutual_info():
+    importances = mutual_info_regression(X,y)
+    feat_importances = pd.Series(importances, X.columns[0:len(X.columns)])
+    sorted_feat_importances = feat_importances.sort_values(ascending=False)
+    width = 12
+    height = 14
+    sns.set(rc = {'figure.figsize':(width,height)})
+    sns.set_style("dark")
+    sns.barplot(data=sorted_feat_importances, palette="crest", orient="h").set(title='Mutual info barplot')
+    plt.yticks(size=8)
+    plt.show()
+#vis_mutual_info()    
+
+#Keeping the attributes with the highest "mutual info" based on the observations of the vis_mutual function plot
+#X = SelectKBest(mutual_info_regression, k=54).fit_transform(X, y)
 
 #Splitting in Train and Test (due to sufficent number of instances for training we held out 20% of data for testing)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=112)
