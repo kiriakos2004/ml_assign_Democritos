@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block page_title $}
-home page
+prediction page
 {% endblock $}
 
 {% block page_body %}
-
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <div class="d-flex" id="main_div">
-    <p>the selected duration is: {{duration}}</p>
+    <p>the selected duration is: {{rpm}}</p>
 </div>
 {% include "partials/footer.html" %}
 {% endblock %}
