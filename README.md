@@ -13,3 +13,5 @@ hystorical data that consist the dataset.csv (attached). The total number of ins
 number of attributes is 65.
 
 The code has been created with the use of python version 3.9.13. In order to recreate the same working enviroment (and to ensure trouble-free code execusion) it is advised to run under virtual enviroment that should be created with the use of requirements.txt
+ 
+ Two Machine Learning regression algorithms (SVR and GradientBoosting) were used in order to predict a ship's main engine fuel consumption (label = ).
