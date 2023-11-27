@@ -7,38 +7,118 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     TRIM = aft_draft - fore_draft
     COURSE_OVER_GROUND = heading
     if (0<rpm and 10<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (10<rpm and 20<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (20<rpm and 30<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (30<rpm and 40<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (40<rpm and 50<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (50<rpm and 60<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (60<rpm and 70<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (70<rpm and 80<=rpm):
-        pass
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     elif (80<rpm and 90<=rpm):
-        pass
-    else:
-        pass                   
-    FUEL_OIL_FLOW_RETURN = 0
-    FUEL_OIL_FLOW_SUPPLY = 0
-    LONGITUDINAL_GROUND_SPEED = 0
-    LONGITUDINAL_WATER_SPEED = 0
-    TURBOCHARGER_SPEED = 0
-    SHAFT_POWER = 0
-    PROPELLER_SHAFT_THRUST = 0
-    PROPELLER_SHAFT_TORQUE = 0
-    SPEED_OVER_GROUND = 0
-    SPEED_THROUGH_WATER = 0
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
+    else:                   
+        FUEL_OIL_FLOW_RETURN = 0
+        FUEL_OIL_FLOW_SUPPLY = 0
+        LONGITUDINAL_GROUND_SPEED = 0
+        LONGITUDINAL_WATER_SPEED = 0
+        TURBOCHARGER_SPEED = 0
+        SHAFT_POWER = 0
+        PROPELLER_SHAFT_THRUST = 0
+        PROPELLER_SHAFT_TORQUE = 0
+        SPEED_OVER_GROUND = 0
+        SPEED_THROUGH_WATER = 0
     return ()
 create_var_inherited(40, 8, 8, 160)
- 
+
 def create_var_dummy():
     FUEL_OIL_SUPPLY_TEMPERATURE = 100.22
     FUEL_OIL_RETURN_TEMPERATURE = 99.94
