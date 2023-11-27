@@ -94,6 +94,18 @@ def create_random_env_vars():
             WINDWAVE_WAVE_DIRECTION, WINDWAVE_WAVE_LENGTH, WINDWAVE_WAVE_HEIGHT_1)
 #create_random_env_vars()
 
-
-def create_data_for_pred():
-    pass
+#this function combines all of the above and creates a nested list with data for prediction for each day (which equals to duration)
+def create_data_for_pred(duration):
+    list_for_predict = []
+    i=1
+    while i<= duration:
+        dummy_list=[]
+        for j in range(22):
+            dummy_list.append(create_random_env_vars()[j])
+        for z in range(3):
+            dummy_list.append(z)
+        list_for_predict.append(dummy_list)
+        i+=1
+    print(list_for_predict)
+    return (list_for_predict)
+create_data_for_pred(2)
