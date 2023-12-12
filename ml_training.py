@@ -24,7 +24,7 @@ def list_column_names():
         print(column_names)
 #list_column_names()
 
-# Dropping attributes that dont contribute in engine's fuel consumption (step of datapreprocessing with the use of domain expertise)
+# Dropping attributes that dont contribute in engine's fuel consumption (step of data preprocessing with the use of domain expertise)
 drop_list = ['DATETIME', 'MAGNETIC COURSE OVER GROUND', 'MAGNETIC VARIATION', 'MAIN ENGINE FUEL INDEX', 
              'MAIN ENGINE SCAVENGE AIR RECEIVER TEMPERATURE', 'TURBOCHARGER LUB OIL INLET PRESSURE', 
              'TURBOCHARGER LUB OIL INLET TEMPERATURE']
@@ -105,13 +105,12 @@ def svc_regressor():
     grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10, verbose=2, pre_dispatch='2*n_jobs', n_jobs=-1)
     grid_search.fit(X_train_transformed, y_train)
     svc_hyp_list = [{grid_search.best_params_['C']},
-                    {grid_search.best_params_['gamma']},
-                    {grid_search.best_params_['epsilon']}]
+                    {grid_search.best_params_['gamma']}]
     print(f"The best C value: {grid_search.best_params_['C']}")
     print(f"The best gamma value is : {grid_search.best_params_['gamma']}")
-    print(f"The best epsilon value: {grid_search.best_params_['epsilon']}")
     return svc_hyp_list
 #svc_regressor()
+#The best hyperparameters are: (C=100, gamma=10,*epsilon was set by default=0.1)
 
 #Hyperparameter tuning using GridSearch in the training dataset for GradientBoosting regressor
 def gb_regressor():
@@ -140,12 +139,12 @@ def gb_regressor():
 #The best hyperparameters are: (learning_rate=0.1, max_depth=10, l2_regularization=True)
 
 #validate the metrics over cross validation to check svc_regressor consistency
-def cross_val_svc_regressor(C, gamma, epsilon):
-    tuned_svc = SVR(kernel='rbf', C=C, gamma=gamma, epsilon=epsilon, random_state=112)
+def cross_val_svc_regressor(C, gamma):
+    tuned_svc = SVR(kernel='rbf', C=C, gamma=gamma, random_state=112)
     scores = cross_val_score(tuned_svc, X, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
-#cross_val_svc_regressor(svc_regressor()[0], svc_regressor()[1], svc_regressor()[2])
+cross_val_svc_regressor(svc_regressor()[0], svc_regressor()[1])
 
 #validate the metrics over cross validation to check GradientBoosting consistency
 def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):
