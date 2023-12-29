@@ -1,10 +1,10 @@
 
 #main_div {
-    animation: fadeIn 1s;
-    -webkit-animation: fadeIn 1s;
-    -moz-animation: fadeIn 1s;
-    -o-animation: fadeIn 1s;
-    -ms-animation: fadeIn 1s;
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
 }
 
 @keyframes fadeIn {
@@ -71,7 +71,7 @@ h3 {
 }
 
 #main_div {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 80px);
     background: url(../images/background.webp) no-repeat center;
     background-size: 100% 100%;
 }
