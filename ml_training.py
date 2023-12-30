@@ -23,12 +23,14 @@ def list_column_names():
         column_names.append(column)
         print(column_names)
 #list_column_names()
+        
 
 # Dropping attributes that dont contribute in engine's fuel consumption (step of data preprocessing with the use of domain expertise)
 drop_list = ['DATETIME', 'MAGNETIC COURSE OVER GROUND', 'MAGNETIC VARIATION', 'MAIN ENGINE FUEL INDEX', 
              'MAIN ENGINE SCAVENGE AIR RECEIVER TEMPERATURE', 'TURBOCHARGER LUB OIL INLET PRESSURE', 
              'TURBOCHARGER LUB OIL INLET TEMPERATURE']
 data = data.drop(drop_list, axis=1)
+
 
 #Assigning the label
 label = "ME FUEL CONSUMPTION"
@@ -72,6 +74,13 @@ def vis_attr():
     sns.set_style("dark")
     plt.show()
 #vis_attr()
+
+
+#After the visualization of the data we can figure out that more attributes can be dropped due to high correlation with other attributes
+#We can also drop TRIM as a feature engineering step as it arrives from AFT and FORE draught
+vis_drop_list = ['PROPELLER SHAFT REVOLUTIONS', 'LONGITUDINAL GROUND SPEED', 'LONGITUDINAL WATER SPEED','TRIM']
+X = X.drop(vis_drop_list, axis=1)
+
 
 #As a feature selection step we may choose to keep the number of attributes with the highest "mutual information" to label
 def vis_mutual_info():
@@ -144,7 +153,7 @@ def cross_val_svc_regressor(C, gamma):
     scores = cross_val_score(tuned_svc, X, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
-cross_val_svc_regressor(svc_regressor()[0], svc_regressor()[1])
+#cross_val_svc_regressor(100, 10)
 
 #validate the metrics over cross validation to check GradientBoosting consistency
 def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):

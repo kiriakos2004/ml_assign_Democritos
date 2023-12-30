@@ -1,21 +1,18 @@
 import random
 import dict
 
+#Creating variables based of the input from the user (these variables in a real aplication will be replaced by the ship's ADLM system)
 def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     LIST = 0
     MIDDLE_DRAFT_P = (aft_draft + fore_draft)/2
     MIDDLE_DRAFT_S = (aft_draft + fore_draft)/2
-    TRIM = aft_draft - fore_draft
     COURSE_OVER_GROUND = heading
-    PROPELLER_SHAFT_REVOLUTIONS = rpm
     RATE_OF_TURN = 0
     STARBOARD_RUDDER_SENSOR = 0
     WATER_DEPTH = 80
     if (0<rpm and 10<=rpm):
         FUEL_OIL_FLOW_RETURN = 2600
         FUEL_OIL_FLOW_SUPPLY = 2700
-        LONGITUDINAL_GROUND_SPEED = 2
-        LONGITUDINAL_WATER_SPEED = 2
         TURBOCHARGER_SPEED = 850
         SHAFT_POWER = 180
         PROPELLER_SHAFT_THRUST = -60
@@ -25,8 +22,6 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     elif (10<rpm and 20<=rpm):
         FUEL_OIL_FLOW_RETURN = 3600
         FUEL_OIL_FLOW_SUPPLY = 3800
-        LONGITUDINAL_GROUND_SPEED = 4
-        LONGITUDINAL_WATER_SPEED = 4
         TURBOCHARGER_SPEED = 1300
         SHAFT_POWER = 500
         PROPELLER_SHAFT_THRUST = -100
@@ -36,8 +31,6 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     elif (20<rpm and 30<=rpm):
         FUEL_OIL_FLOW_RETURN = 3300
         FUEL_OIL_FLOW_SUPPLY = 3500
-        LONGITUDINAL_GROUND_SPEED = 6
-        LONGITUDINAL_WATER_SPEED = 6
         TURBOCHARGER_SPEED = 2600
         SHAFT_POWER = 900
         PROPELLER_SHAFT_THRUST = -130
@@ -47,8 +40,6 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     elif (30<rpm and 40<=rpm):
         FUEL_OIL_FLOW_RETURN = 3500
         FUEL_OIL_FLOW_SUPPLY = 3800
-        LONGITUDINAL_GROUND_SPEED = 8
-        LONGITUDINAL_WATER_SPEED = 8
         TURBOCHARGER_SPEED = 3100
         SHAFT_POWER = 1100
         PROPELLER_SHAFT_THRUST = -160
@@ -58,8 +49,6 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     elif (40<rpm and 50<=rpm):
         FUEL_OIL_FLOW_RETURN = 3600
         FUEL_OIL_FLOW_SUPPLY = 4000
-        LONGITUDINAL_GROUND_SPEED = 9.5
-        LONGITUDINAL_WATER_SPEED = 9.5
         TURBOCHARGER_SPEED = 4500
         SHAFT_POWER = 1600
         PROPELLER_SHAFT_THRUST = -200
@@ -69,8 +58,6 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     elif (50<rpm and 60<=rpm):
         FUEL_OIL_FLOW_RETURN = 2800
         FUEL_OIL_FLOW_SUPPLY = 3500
-        LONGITUDINAL_GROUND_SPEED = 11
-        LONGITUDINAL_WATER_SPEED = 11
         TURBOCHARGER_SPEED = 6200
         SHAFT_POWER = 2900
         PROPELLER_SHAFT_THRUST = -350
@@ -78,53 +65,47 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
         SPEED_OVER_GROUND = 11
         SPEED_THROUGH_WATER = 11
     elif (60<rpm and 70<=rpm):
-        FUEL_OIL_FLOW_RETURN = 0
-        FUEL_OIL_FLOW_SUPPLY = 0
-        LONGITUDINAL_GROUND_SPEED = 0
-        LONGITUDINAL_WATER_SPEED = 0
-        TURBOCHARGER_SPEED = 0
-        SHAFT_POWER = 0
-        PROPELLER_SHAFT_THRUST = 0
-        PROPELLER_SHAFT_TORQUE = 0
-        SPEED_OVER_GROUND = 0
-        SPEED_THROUGH_WATER = 0
+        FUEL_OIL_FLOW_RETURN = 2500
+        FUEL_OIL_FLOW_SUPPLY = 3200
+        TURBOCHARGER_SPEED = 9500
+        SHAFT_POWER = 4500
+        PROPELLER_SHAFT_THRUST = -500
+        PROPELLER_SHAFT_TORQUE = 650
+        SPEED_OVER_GROUND = 13
+        SPEED_THROUGH_WATER = 13
     elif (70<rpm and 80<=rpm):
-        FUEL_OIL_FLOW_RETURN = 0
-        FUEL_OIL_FLOW_SUPPLY = 0
-        LONGITUDINAL_GROUND_SPEED = 0
-        LONGITUDINAL_WATER_SPEED = 0
-        TURBOCHARGER_SPEED = 0
-        SHAFT_POWER = 0
-        PROPELLER_SHAFT_THRUST = 0
-        PROPELLER_SHAFT_TORQUE = 0
-        SPEED_OVER_GROUND = 0
-        SPEED_THROUGH_WATER = 0
+        FUEL_OIL_FLOW_RETURN = 3500
+        FUEL_OIL_FLOW_SUPPLY = 4600
+        TURBOCHARGER_SPEED = 11000
+        SHAFT_POWER = 6000
+        PROPELLER_SHAFT_THRUST = -600
+        PROPELLER_SHAFT_TORQUE = 750
+        SPEED_OVER_GROUND = 13.5
+        SPEED_THROUGH_WATER = 13.5
     elif (80<rpm and 90<=rpm):
+        FUEL_OIL_FLOW_RETURN = 2100
+        FUEL_OIL_FLOW_SUPPLY = 3700
+        TURBOCHARGER_SPEED = 13500
+        SHAFT_POWER = 8000
+        PROPELLER_SHAFT_THRUST = -650
+        PROPELLER_SHAFT_TORQUE = 860
+        SPEED_OVER_GROUND = 15
+        SPEED_THROUGH_WATER = 15
+    else:
         FUEL_OIL_FLOW_RETURN = 0
         FUEL_OIL_FLOW_SUPPLY = 0
-        LONGITUDINAL_GROUND_SPEED = 0
-        LONGITUDINAL_WATER_SPEED = 0
         TURBOCHARGER_SPEED = 0
         SHAFT_POWER = 0
         PROPELLER_SHAFT_THRUST = 0
         PROPELLER_SHAFT_TORQUE = 0
         SPEED_OVER_GROUND = 0
         SPEED_THROUGH_WATER = 0
-    else:                   
-        FUEL_OIL_FLOW_RETURN = 0
-        FUEL_OIL_FLOW_SUPPLY = 0
-        LONGITUDINAL_GROUND_SPEED = 0
-        LONGITUDINAL_WATER_SPEED = 0
-        TURBOCHARGER_SPEED = 0
-        SHAFT_POWER = 0
-        PROPELLER_SHAFT_THRUST = 0
-        PROPELLER_SHAFT_TORQUE = 0
-        SPEED_OVER_GROUND = 0
-        SPEED_THROUGH_WATER = 0
-    return ()
+    return (LIST, MIDDLE_DRAFT_P, MIDDLE_DRAFT_S, COURSE_OVER_GROUND, RATE_OF_TURN, STARBOARD_RUDDER_SENSOR,
+            WATER_DEPTH, FUEL_OIL_FLOW_RETURN, FUEL_OIL_FLOW_SUPPLY, TURBOCHARGER_SPEED, SHAFT_POWER,
+            PROPELLER_SHAFT_THRUST, PROPELLER_SHAFT_TORQUE, SPEED_OVER_GROUND, SPEED_THROUGH_WATER)
 create_var_inherited(40, 8, 8, 160)
 
-#Creating dummy variables from the mean value of the training dataset (three variable have )
+#Creating dummy variables from the mean value of the training dataset
 def create_var_dummy():
     FUEL_OIL_SUPPLY_TEMPERATURE = dict.dict_of_attributes['FUEL OIL SUPPLY TEMPERATURE'][0]
     FUEL_OIL_RETURN_TEMPERATURE = dict.dict_of_attributes['FUEL_OIL_RETURN_TEMPERATURE'][0]
@@ -145,6 +126,7 @@ def create_var_dummy():
             THRUST_MAIN_BEARING_TEMP, TRANSVERSE_GROUND_SPEED)
 create_var_dummy()
 
+#Creating dummy enviromental variables in order to show the flustration in ship's fuel consuption. (These variables in a real application will be consumed by a weather API)
 def create_random_env_vars():
     WIND_ANGLE = random.randrange(-293, -51)
     WIND_SPEED = random.randrange(3, 22)
