@@ -1,4 +1,4 @@
-from . import var_creation
+import var_creation
 
 def test(y):
     z = y+3

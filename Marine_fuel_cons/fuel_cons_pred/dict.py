@@ -1,3 +1,4 @@
+# This is a dictionary of all the attributes. The keys are the names of the attributes. The first element of earch val list is the mean and the second if the std.
 dict_of_attributes = {'AFT DRAFT': [11.33, 2.67], 
 'FORE DRAFT': [9.51, 3.33], 
 'FUEL OIL SUPPLY TEMPERATURE': [100.22, 38.84], 
@@ -10,7 +11,7 @@ dict_of_attributes = {'AFT DRAFT': [11.33, 2.67],
 'LONGITUDINAL GROUND SPEED': [6.65, 5.8], 
 'LONGITUDINAL WATER SPEED': [0.85, 7.35], 
 'MAIN ENGINE  SCAVENGE AIR PRESSURE': [5.48, 18.87], 
-'PROPELLER SHAFT REVOLUTIONS': [805.99, 2663.23], 
+'PROPELLER SHAFT REVOLUTIONS': [41.76, 35.7], 
 'ME AXIAL VIBRATION': [0.67, 0.58], 
 'FUEL OIL INLET PRESSURE': [1.0, 0.06], 
 'FUEL OIL INLET TEMPERATURE': [100.46, 41.6], 
