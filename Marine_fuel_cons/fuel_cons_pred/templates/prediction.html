@@ -8,7 +8,10 @@ prediction page
 {% block page_body %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <div class="d-flex" id="main_div">
-    <p>the selected duration is: {{rpm}}</p>
+    <p>the selected duration is: {{duration}}<br>
+    the selected rpm is: {{rpm}}<br>
+    the results are: {{result}}
+    the list is: {{list}}<br></p>
 </div>
 {% include "partials/footer.html" %}
 {% endblock %}
