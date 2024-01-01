@@ -77,7 +77,7 @@ def vis_attr():
 
 
 #After the visualization of the data we can figure out that more attributes can be dropped due to high correlation with other attributes
-#We can also drop TRIM as a feature engineering step as it arrives from AFT and FORE draught
+#We can also drop TRIM as a feature engineering step as it arises from AFT and FORE draught
 vis_drop_list = ['PROPELLER SHAFT REVOLUTIONS', 'LONGITUDINAL GROUND SPEED', 'LONGITUDINAL WATER SPEED','TRIM']
 X = X.drop(vis_drop_list, axis=1)
 
@@ -104,6 +104,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 #The values between different data attributes span to wide range so it is beneficcial for algorithm converge to normalize the data
 scaler = preprocessing.StandardScaler().fit(X_train)
+X_transformed = scaler.transform(X)
 X_train_transformed = scaler.transform(X_train)
 X_test_transformed = scaler.transform(X_test)
 
@@ -149,8 +150,8 @@ def gb_regressor():
 
 #validate the metrics over cross validation to check svc_regressor consistency
 def cross_val_svc_regressor(C, gamma):
-    tuned_svc = SVR(kernel='rbf', C=C, gamma=gamma, random_state=112)
-    scores = cross_val_score(tuned_svc, X, y, cv=10, scoring='neg_root_mean_squared_error')
+    tuned_svc = SVR(kernel='rbf', C=C, gamma=gamma)
+    scores = cross_val_score(tuned_svc, X_transformed, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
 #cross_val_svc_regressor(100, 10)
@@ -167,7 +168,7 @@ def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):
                     n_iter_no_change=5, 
                     tol=1e-5,
                     random_state=112)
-    scores = cross_val_score(tuned_gb, X, y, cv=10, scoring='neg_root_mean_squared_error')
+    scores = cross_val_score(tuned_gb, X_transformed, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
 #cross_val_gb_regressor(0.1, 10, True)    

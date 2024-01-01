@@ -164,6 +164,7 @@ def create_data_for_pred(duration, rpm, aft_draft, fore_draft, heading):
     i=1
     while i<= duration:
         dummy_list=[]
+        dummy_list.append(rpm)
         for j in range(15):
             dummy_list.append(create_var_inherited(rpm, aft_draft, fore_draft, heading)[j])
         for k in range(13):
