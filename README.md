@@ -19,5 +19,4 @@ The code has been created with the use of python version 3.9.13. In order to rec
 The ml_training.py script is used in order to determine the best algorithm and tune its hyperparameters. The most suitable "tuned" algorithn is saved and then used in django framework in order to predict the main engine fuel consumption.
 User input values of interest in the django's front end form and the CUMULATIVE main engines fuel oil consumption (based on models prediction) together with a diagramm of daily fuel oil consumption is returned.
 
-The result_scores.py script can be used by the user to visualize the results of the tuning process of both algorithms in order
- to justify the final selection of "best" algorithm.
+The result_scores.py script can be used by the user to visualize the results of the tuning process of both algorithms (which can also be seen in result.txt file), in order to justify the final selection of "best" algorithm.
