@@ -28,10 +28,13 @@ def prediction(request):
             heading = float(request.POST.get('heading'))
         except:
             heading = dict.dict_of_attributes['HEADING'][0]
-         
-        hello = var_creation.create_var_inherited(rpm, aft_draft, fore_draft, heading)
         list = var_creation.create_data_for_pred(duration, rpm, aft_draft, fore_draft, heading)
-        return render(request, 'prediction.html', {'result':hello, 'rpm':rpm, 'duration':duration, 'list':list})
+        list_of_labels = var_creation.create_labels(duration)
+        data= [26900, 28700, 27300, 29200]
+        com_cons = sum(data)
+        return render(request, 'prediction.html', {'rpm':rpm, 'duration':duration, 'list':list, 'labels':list_of_labels,
+                                                   'labels':list_of_labels, 'data':data, 'com_cons':com_cons})
     else:
         return render(request, 'prediction.html', {})
+
     

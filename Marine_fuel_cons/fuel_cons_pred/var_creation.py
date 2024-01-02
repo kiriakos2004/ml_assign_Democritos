@@ -2,7 +2,7 @@ import random
 from . import dict
 
 #Creating variables based of the input from the user (these variables in a real aplication will be replaced by the ship's ADLM system)
-def create_var_inherited(rpm, aft_draft, fore_draft, heading):
+def create_var_inherited(rpm, aft_draft, fore_draft, heading):   
     LIST = 0
     MIDDLE_DRAFT_P = (aft_draft + fore_draft)/2
     MIDDLE_DRAFT_S = (aft_draft + fore_draft)/2
@@ -103,7 +103,7 @@ def create_var_inherited(rpm, aft_draft, fore_draft, heading):
     return (LIST, MIDDLE_DRAFT_P, MIDDLE_DRAFT_S, COURSE_OVER_GROUND, RATE_OF_TURN, STARBOARD_RUDDER_SENSOR,
             WATER_DEPTH, FUEL_OIL_FLOW_RETURN, FUEL_OIL_FLOW_SUPPLY, TURBOCHARGER_SPEED, SHAFT_POWER,
             PROPELLER_SHAFT_THRUST, PROPELLER_SHAFT_TORQUE, SPEED_OVER_GROUND, SPEED_THROUGH_WATER)
-#create_var_inherited(40, 11.33, 9.51, 161.33)
+
 
 #Creating dummy variables from the mean value of the training dataset
 def create_var_dummy():
@@ -124,7 +124,7 @@ def create_var_dummy():
             ME_AXIAL_VIBRATION, FUEL_OIL_INLET_PRESSURE, FUEL_OIL_INLET_TEMPERATURE, TURBOCHARGER_EXH_EXH_GAS_INLET_TEMP,
             TURBOCHARGER_EXH_EXH_GAS_OUTLET_TEMP, THRUST_BEARING_TEMPERATURE, STERN_TUBE_BEARING_TEMPERATURE,
             THRUST_MAIN_BEARING_TEMP, TRANSVERSE_GROUND_SPEED)
-create_var_dummy()
+
 
 #Creating dummy enviromental variables in order to show the flustration in ship's fuel consuption. (These variables in a real application will be consumed by a weather API)
 def create_random_env_vars():
@@ -156,7 +156,7 @@ def create_random_env_vars():
             SEA_TEMPERATURE, SIGNIFICANT_WAVE_HEIGHT, SWELL_WAVE_HEIGHT, SWELL_WAVE_DIRECTION, SWELL_WAVE_LENGTH,
             SWELL_SIGNIFICANT_WAVE_HEIGHT, WIND_RELATIVE_DIRECTION, WIND_RELATIVE_SPEED, WINDWAVE_WAVE_HEIGHT,
             WINDWAVE_WAVE_DIRECTION, WINDWAVE_WAVE_LENGTH, WINDWAVE_WAVE_HEIGHT_1)
-#create_random_env_vars()
+
 
 #this function combines all of the above and creates a nested list with data for prediction for each day (which equals to duration)
 def create_data_for_pred(duration, rpm, aft_draft, fore_draft, heading):
@@ -171,8 +171,13 @@ def create_data_for_pred(duration, rpm, aft_draft, fore_draft, heading):
             dummy_list.append(create_var_dummy()[k])
         for l in range(23):
             dummy_list.append(create_random_env_vars()[l])    
-        list_for_predict.append(dummy_list)    
+        list_for_predict.append(dummy_list)
         i+=1
-    print(list_for_predict)
     return (list_for_predict)
 create_data_for_pred(10, 40, 11.33, 9.51, 161.33)
+
+#Creating a list of labels to be used in chart
+def create_labels(duration):
+    list_of_labels = [str(n) for n in range(1, int(duration)+1)]
+    list_of_labels = [f"Fuel cons for day: {x}" for x in list_of_labels]
+    return list_of_labels
