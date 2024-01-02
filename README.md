@@ -16,7 +16,7 @@ The code has been created with the use of python version 3.9.13. In order to rec
  
  Two Machine Learning regression algorithms (SVR with RBF kernel and GradientBoosting) under the scikit-learn python framework were used in order to predict a ship's main engine fuel consumption (label = ME FUEL CONSUMPTION). The other 66 column names (displayed in dataset_attributes.txt) represent the training attributes. 
 
-The ml_training.py script is used in order to determine the best algorithm and tune its hyperparameters. The tuning process has been performed with the use cross-validated grid-search over a parameter grid (splitting the dataset in 10 folds).The most suitable "tuned" algorithn is saved and then used in django framework in order to predict the main engine fuel consumption.
+The ml_training.py script is used in order to determine the best algorithm and tune its hyperparameters. The tuning process has been performed with the use of cross-validated grid-search over a parameter grid (splitting the dataset in 10 folds).The most suitable "tuned" algorithn is saved and then used in django framework in order to predict the main engine fuel consumption.
 User input values of interest in the django's front end form and the CUMULATIVE main engines fuel oil consumption (based on models prediction) together with a diagramm of daily fuel oil consumption is returned.
 
 The result_scores.py script can be used by the user to visualize the results of the tuning process of both algorithms (which can also be seen in result.txt file), in order to justify the final selection of "best" algorithm.
