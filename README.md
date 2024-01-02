@@ -17,4 +17,4 @@ The code has been created with the use of python version 3.9.13. In order to rec
  Two Machine Learning regression algorithms (SVR and GradientBoosting) were used in order to predict a ship's main engine fuel consumption (label = ME FUEL CONSUMPTION). The other 66 column names (displayed in dataset_attributes.txt) represent the training attributes. 
 
 The ml_training.py script is used in order to determine the best algorithm and tune its hyperparameters. The most suitable "tuned" algorithn is saved and then used in django framework in order to predict the main engine fuel consumption.
-User input values of interest in the django's front end form and the CUMULATIVE main engines fuel oil consumption (based on models prediction) is returned.
+User input values of interest in the django's front end form and the CUMULATIVE main engines fuel oil consumption (based on models prediction) together with a diagramm of daily fuel oil consumption is returned.
