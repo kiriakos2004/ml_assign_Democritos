@@ -4,6 +4,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sns
 import seaborn.objects as so
+import pickle
 from sklearn.model_selection import GridSearchCV, train_test_split, cross_val_score
 from sklearn import preprocessing
 from sklearn.feature_selection import SelectKBest, mutual_info_regression
@@ -112,7 +113,7 @@ X_test_transformed = scaler.transform(X_test)
 def svc_regressor():
     hyperparam_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.5, 1]}
     svr_reg = SVR(kernel='rbf')
-    grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10, verbose=2, pre_dispatch='2*n_jobs', n_jobs=-1)
+    grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10, verbose=2, scoring='neg_root_mean_squared_error', pre_dispatch='2*n_jobs', n_jobs=-1)
     grid_search.fit(X_train_transformed, y_train)
     svc_hyp_list = [{grid_search.best_params_['C']},
                     {grid_search.best_params_['gamma']}]
@@ -127,7 +128,7 @@ def gb_regressor():
     hyperparam_grid = {
     "learning_rate": [0.01, 0.1],
     "max_depth": [5, 10, 20],
-    "l2_regularization": [True, False]}
+    "l2_regularization": [0.1, 0.001, 0.0001]}
     hist_gb_reg = HistGradientBoostingRegressor(
         max_iter=500, 
         loss="squared_error", 
@@ -136,7 +137,7 @@ def gb_regressor():
         n_iter_no_change=5, 
         tol=1e-5, 
         verbose=2)
-    grid_search = GridSearchCV(hist_gb_reg, hyperparam_grid, cv=10)
+    grid_search = GridSearchCV(hist_gb_reg, hyperparam_grid, cv=10, scoring='neg_root_mean_squared_error', n_jobs=-1)
     grid_search.fit(X_train_transformed, y_train)
     gb_regressor_hyp_list = [grid_search.best_params_['learning_rate'], 
                              {grid_search.best_params_['max_depth']}, 
@@ -145,8 +146,8 @@ def gb_regressor():
     print(f"The best max_depth value: {grid_search.best_params_['max_depth']}")
     print(f"The l2_regularization must be set to: {grid_search.best_params_['l2_regularization']}")
     return gb_regressor_hyp_list
-#gb_regressor()
-#The best hyperparameters are: (learning_rate=0.1, max_depth=10, l2_regularization=True)
+gb_regressor()
+#The best hyperparameters are: (learning_rate=0.1, max_depth=10, l2_regularization=0.0001)
 
 #validate the metrics over cross validation to check svc_regressor consistency
 def cross_val_svc_regressor(C, gamma):
@@ -171,4 +172,4 @@ def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):
     scores = cross_val_score(tuned_gb, X_transformed, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
-#cross_val_gb_regressor(0.1, 10, True)    
+#cross_val_gb_regressor(0.1, 10, 0.0001)    
