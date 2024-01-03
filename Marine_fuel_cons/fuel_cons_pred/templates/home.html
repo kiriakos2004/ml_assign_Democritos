@@ -6,30 +6,30 @@ home page
 {% endblock $}
 
 {% block page_body %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% include "partials/header.html" %}
 <div class="d-flex" id="main_div">
     <div class="container row align-items-center mx-auto">
-        <br>
         <div class="row justify-content-md-center">
-            <div id="box_form" style="text-align: center;" class="rounded">
-                <form action="{% url 'prediction' %}" method="post">
-                    {% csrf_token %}
-                    <h2>Please enter the values below</h2>
-                    <label for="duration">Trip duration</label>
-                    <input type="text" class="form-control" id="duration" name="duration" placeholder="Enter the estimated days of trip">
-                    <label for="rpm">Engine_RPM</label>
-                    <input type="text" class="form-control" id="rpm" name="rpm" placeholder="Enter the ordered engine RPM">                    
-                    <label for="aft_draft">Aft draft of ship</label>                    
-                    <input type="text" class="form-control" id="aft_draft" placeholder="Enter the AFT draught in meters">
-                    <label for="fore_draft">Fore draft of ship</label>
-                    <input type="text" class="form-control" id="fore_draft" placeholder="Enter the FORE draught in meters">
-                    <label for="heading">Ship Heading</label>
-                    <input type="text" class="form-control" id="heading" placeholder="Enter the heading in degrees">
-                    <br>
-                    <button type="submit" class="btn btn-primary btn-block mb-2">Calculate fuel consumption</button>
-                </form>
-            </div>
+        <div id="box_form" style="text-align: center;" class="rounded">
+            <form action="{% url 'prediction' %}" method="post">
+                {% csrf_token %}
+                <h2>Please enter the values below</h2>
+                <label for="duration" id="title">Trip duration (default = 10days)</label>
+                <input type="text" class="form-control" id="duration" name="duration" placeholder="Enter the desired days of trip">
+                <label for="rpm" id="title">Engine_RPM (default = 40rpm)</label>
+                <input type="text" class="form-control" id="rpm" name="rpm" placeholder="Enter the ordered engine RPM">                    
+                <label for="aft_draft" id="title">Aft draft of ship (default = 11.33m)</label>                    
+                <input type="text" class="form-control" id="aft_draft" name="aft_draft" placeholder="Enter the AFT draught in meters">
+                <label for="fore_draft" id="title">Fore draft of ship (default = 9.51m)</label>
+                <input type="text" class="form-control" id="fore_draft" name="fore_draft" placeholder="Enter the FORE draught in meters">
+                <label for="heading" id="title">Ship Heading (default = 161.33Degrees)</label>
+                <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter the heading in degrees">
+                <br>
+                <button type="submit" class="btn btn-primary btn-block mb-2" style="background-color: rgba(42, 8, 146, 0.82);">Calculate fuel consumption</button>
+            </form>
         </div>
+        </div>  
     </div>
 </div>
 {% include "partials/footer.html" %}

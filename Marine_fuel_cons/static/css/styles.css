@@ -1,10 +1,10 @@
 
 #main_div {
-    animation: fadeIn 1s;
-    -webkit-animation: fadeIn 1s;
-    -moz-animation: fadeIn 1s;
-    -o-animation: fadeIn 1s;
-    -ms-animation: fadeIn 1s;
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
 }
 
 @keyframes fadeIn {
@@ -71,13 +71,14 @@ h3 {
 }
 
 #main_div {
-    height: calc(100vh - 56px);
-    background: url(../images/background.webp) no-repeat center;
+    height: calc(100vh - 80px);
+    background: url(../images/ai.jpg) no-repeat center;
     background-size: 100% 100%;
 }
 
 #box {
-    background-color: #7f919aef;
+    background-color: #1e303aef;
+
 }
 
 #box:hover {
@@ -85,7 +86,7 @@ h3 {
 }
 
 #box_form {
-    background-color: #7f919abb;
+    background-color: #3b5b6bbb;
     width:50%;
 }
 
@@ -106,4 +107,13 @@ h3 {
 .card-text {
     font-size: 0.8vw !important;
     color: azure;
+}
+
+#title {
+    color: azure;
+}
+
+#chart_box {
+    background-color: #eff5f8cb;
+    width:80%;
 }
