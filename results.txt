@@ -11,6 +11,9 @@ Cross validation scores with above hyperparameters (with scaling):
 [17.33590152, 16.11795378, 11.36634574, 17.82568171, 13.80180982,
  14.96270583, 16.02632112, 16.46566786, 12.31262381, 7.3167631 ]
 
+Cross validation scores with above hyperparameters (with scaling and mutual information):
+[15.04557722, 15.71050756, 15.96516515, 17.53413451, 14.81243876,
+ 16.18152426, 13.16578652, 17.18676758, 10.82552675, 8.70888499]
 
 
 Best Hyperparemeters for SupportVector regressor:

@@ -76,12 +76,10 @@ def vis_attr():
     plt.show()
 #vis_attr()
 
-
 #After the visualization of the data we can figure out that more attributes can be dropped due to high correlation with other attributes
 #We can also drop TRIM as a feature engineering step as it arises from AFT and FORE draught
 vis_drop_list = ['PROPELLER SHAFT REVOLUTIONS', 'LONGITUDINAL GROUND SPEED', 'LONGITUDINAL WATER SPEED','TRIM']
 X = X.drop(vis_drop_list, axis=1)
-
 
 #As a feature selection step we may choose to keep the number of attributes with the highest "mutual information" to label
 def vis_mutual_info():
@@ -98,7 +96,7 @@ def vis_mutual_info():
 #vis_mutual_info()    
 
 #Keeping the attributes with the highest "mutual info" based on the observations of the vis_mutual function plot
-#X = SelectKBest(mutual_info_regression, k=54).fit_transform(X, y)
+X = SelectKBest(mutual_info_regression, k=44).fit_transform(X, y)
 
 #Splitting in Train and Test (due to sufficent number of instances for training we held out 20% of data for testing)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=112)
@@ -146,7 +144,7 @@ def gb_regressor():
     print(f"The best max_depth value: {grid_search.best_params_['max_depth']}")
     print(f"The l2_regularization must be set to: {grid_search.best_params_['l2_regularization']}")
     return gb_regressor_hyp_list
-gb_regressor()
+#gb_regressor()
 #The best hyperparameters are: (learning_rate=0.1, max_depth=10, l2_regularization=0.0001)
 
 #validate the metrics over cross validation to check svc_regressor consistency
@@ -172,4 +170,21 @@ def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):
     scores = cross_val_score(tuned_gb, X_transformed, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
-#cross_val_gb_regressor(0.1, 10, 0.0001)    
+#cross_val_gb_regressor(0.1, 10, 0.0001)
+
+#training and saving the best algorithm in order to use it django framework for the actual prediction
+def save_model(learning_rate, max_depth, l2_regularization):
+    model = HistGradientBoostingRegressor(learning_rate= learning_rate,
+                   max_depth= max_depth,
+                   l2_regularization= l2_regularization,
+                    max_iter=500, 
+                    loss="squared_error", 
+                    early_stopping='auto', 
+                    scoring='loss', 
+                    n_iter_no_change=5, 
+                    tol=1e-5)
+    model.fit(X_train, y_train)
+    filename = 'finalized_model.sav'
+    pickle.dump(model, open(filename, 'wb'))
+#save_model(0.1, 10, 0.0001)
+
