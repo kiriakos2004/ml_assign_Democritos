@@ -119,7 +119,7 @@ def svc_regressor():
     print(f"The best gamma value is : {grid_search.best_params_['gamma']}")
     return svc_hyp_list
 #svc_regressor()
-#The best hyperparameters are: (C=100, gamma=10,*epsilon was set by default=0.1)
+#The best hyperparameters are: (C=100, gamma=0.01,*epsilon was set by default=0.1)
 
 #Hyperparameter tuning using GridSearch in the training dataset for GradientBoosting regressor
 def gb_regressor():
@@ -153,7 +153,7 @@ def cross_val_svc_regressor(C, gamma):
     scores = cross_val_score(tuned_svc, X_transformed, y, cv=10, scoring='neg_root_mean_squared_error')
     print(scores)
     return scores
-#cross_val_svc_regressor(100, 10)
+#cross_val_svc_regressor(100, 0.01)
 
 #validate the metrics over cross validation to check GradientBoosting consistency
 def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):
