@@ -20,7 +20,7 @@ Best Hyperparemeters for SupportVector regressor:
 C: 100
 gamma: 0.01
 
-Cross validation scores with above hyperparameters  (without scaling):
-[708.07419848, 452.89164681, 629.65957263, 129.4064383, 297.06637739,
- 821.03365319, 405.02625248, 624.36893138, 449.43871697, 869.92839837]
+Cross validation scores with above hyperparameters  (with scaling and mutual information):
+[23.4186545, 18.33352898, 52.16318255, 16.14108978, 40.36787955, 
+ 39.24772148, 29.56330921, 39.36666881, 103.07331032, 50.6134124]
 
