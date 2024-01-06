@@ -28,13 +28,9 @@ def prediction(request):
             heading = float(request.POST.get('heading'))
         except:
             heading = dict.dict_of_attributes['HEADING'][0]
-        list = var_creation.create_data_for_pred(duration, rpm, aft_draft, fore_draft, heading)
         list_of_labels = var_creation.create_labels(duration)
-        data= [26900, 28700, 27300, 29200]
-        com_cons = sum(data)
-        return render(request, 'prediction.html', {'rpm':rpm, 'duration':duration, 'list':list, 'labels':list_of_labels,
-                                                   'labels':list_of_labels, 'data':data, 'com_cons':com_cons})
+        results = ml_model.results(var_creation.create_data_for_pred(duration, rpm, aft_draft, fore_draft, heading))
+        com_cons = round(sum(results),2)
+        return render(request, 'prediction.html', {'duration':duration, 'com_cons':com_cons, 'labels':list_of_labels, 'results':results})
     else:
         return render(request, 'prediction.html', {})
-
-    
