@@ -1,26 +1,26 @@
+Cross validation RMSE for Linearregressor (prediction baseline)
+[14.49867332, 23.21982682, 48.46220478, 60.72577752, 27.94318639,
+ 31.75786754, 23.30192079, 25.15959812, 54.13407105, 38.11686137]
+
 Best Hyperparemeters for GradientBoosting regressor:
-learning_rate: 0.1
-max_depth value: 10
-l2_regularization set to: 0.0001
+learning_rate: 
+max_depth value: 
+l2_regularization set to: 
 
 Cross validation scores with above hyperparameters (without scaling):
-[14.93631343, 15.58386, 12.86628177, 36.06647914, 14.78576989,
-  15.89662374, 14.90552378, 14.6379618, 11.00049996, 8.32913522]
+
 
 Cross validation scores with above hyperparameters (with scaling):
-[17.33590152, 16.11795378, 11.36634574, 17.82568171, 13.80180982,
- 14.96270583, 16.02632112, 16.46566786, 12.31262381, 7.3167631 ]
+
 
 Cross validation scores with above hyperparameters (with scaling and mutual information):
-[15.04557722, 15.71050756, 15.96516515, 17.53413451, 14.81243876,
- 16.18152426, 13.16578652, 17.18676758, 10.82552675, 8.70888499]
+
 
 
 Best Hyperparemeters for SupportVector regressor:
-C: 100
-gamma: 0.01
+C: 
+gamma: 
 
 Cross validation scores with above hyperparameters  (with scaling and mutual information):
-[23.4186545, 18.33352898, 52.16318255, 16.14108978, 40.36787955, 
- 39.24772148, 29.56330921, 39.36666881, 103.07331032, 50.6134124]
+
 
