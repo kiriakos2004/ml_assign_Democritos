@@ -9,8 +9,8 @@ url: "https://msc-ai.iit.demokritos.gr/en".
 
   This project is a web service where a user can calculate the fuel consumption of a certain ship (for a specific
 trip) by importing the values that specify it. An ML model predicting the main engine's fuel consumption has been fitted to 
-hystorical data that consist the dataset.csv (attached). The total number of rows is 263511 and the
-number of columns is 67.
+hystorical data that consist the dataset.csv (attached). The total number of rows is 80000 and the
+number of columns is 46.
 
 The code has been created with the use of python version 3.9.13. In order to recreate the same working enviroment (and to ensure trouble-free code execusion) it is advised to run under virtual enviroment that should be created with the use of requirements.txt
  
