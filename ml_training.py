@@ -109,7 +109,7 @@ X_test_transformed = scaler.transform(X_test)
 
 #Hyperparameter tuning using GridSearch in the training dataset for SVC regressor
 def svc_regressor():
-    hyperparam_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.1, 1]}
+    hyperparam_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.01, 0.1, 1]}
     svr_reg = SVR(kernel='rbf')
     grid_search = GridSearchCV(svr_reg, hyperparam_grid, cv=10, verbose=2, scoring='neg_root_mean_squared_error', pre_dispatch='2*n_jobs', n_jobs=-1)
     grid_search.fit(X_train_transformed, y_train)
@@ -145,7 +145,7 @@ def gb_regressor():
     print(f"The l2_regularization (GB) must be set to: {grid_search.best_params_['l2_regularization']}")
     return gb_regressor_hyp_list
 gb_regressor()
-#The best hyperparameters are: (learning_rate=0.1, max_depth=10, l2_regularization=0.0001)
+#The best hyperparameters are: (learning_rate=0.1, max_depth=20, l2_regularization=0.01)
 
 #validate the metrics over cross validation for Linearregressor in order to establish prediction baseline
 def cross_val_lnr_regressor():
@@ -178,7 +178,7 @@ def cross_val_gb_regressor(learning_rate, max_depth, l2_regularization):
     scores = cross_val_score(tuned_gb, X_transformed, y, cv=10, scoring='neg_root_mean_squared_error', n_jobs=-1)
     print(scores)
     return scores
-#cross_val_gb_regressor(0.1, 10, 0.0001)
+#cross_val_gb_regressor(0.1, 20, 0.01)
 
 #training and saving the best algorithm in order to use it django framework for the actual prediction
 def save_model(learning_rate, max_depth, l2_regularization):
@@ -194,5 +194,5 @@ def save_model(learning_rate, max_depth, l2_regularization):
     model.fit(X_train, y_train)
     filename = 'finalized_model.sav'
     pickle.dump(model, open(filename, 'wb'))
-#save_model(0.1, 10, 0.0001)
+#save_model(0.1, 20, 0.01)
 
