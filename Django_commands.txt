@@ -1,3 +1,14 @@
+Section A "Instructions to activate django server"
+
+-In order to activate server, user must first activate virtual enviroment.
+-As a next step he must navigate (via terminal) to the folder "Marine_fuel_cons".
+    Inside this folder should be a file named manage.py
+-While on folder user should run the command : "python manage.py runserver"
+-If everything works well, django server should be activated and the web page can be access at "http://127.0.0.1:8000/"
+
+
+Section B "Basic django commands"
+
 "The startproject <projectname> command is a Django management command used to 
 create a new Django project with the specified <projectname>. 
 When you run this command in your terminal or command prompt, 
