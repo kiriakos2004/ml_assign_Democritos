@@ -19,7 +19,6 @@ The code has been created with the use of python version 3.9.13. In order to rec
 The web interface has been constructed with the use of django framework from python.In the section A of text file "Django_commands.txt" (attached) there are instructions in order to bring the development server to life.
 
 The ml_training.py script is used in order to determine the best algorithm and tune its hyperparameters. The tuning process has been performed with the use of cross-validated grid-search over a parameter grid (splitting the dataset in 10 folds).The most suitable "tuned" algorithn is saved and then used in django framework in order to predict the main engine fuel consumption.
-User input values of interest in the django's front end form and the CUMULATIVE main engines fuel oil consumption (based on models prediction) together with a diagramm of daily fuel oil consumption is returned.
 
 User can inputs Trip duration (in days), Engine_RPM, Aft draft of ship, Fore draft of ship and Ship Heading. The service uses the saved trained model in order to return the cululative fuel oil consuption and a diagramm of the ships daily fuel oil consumption.
 
