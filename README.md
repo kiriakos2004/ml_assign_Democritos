@@ -16,7 +16,7 @@ The test_dataset.csv is a seperate dataset used for testing and represents a com
 
 The code has been created with the use of python version 3.9.13. In order to recreate the same working enviroment (and to ensure trouble-free code execusion) it is advised to run under virtual enviroment that should be created with the use of requirements.txt (attached).
 
-The web interface has been constructed with the use of django framework from python.In the text file Django_commands.txt (attached) there are instruction in order to bring the service to life.
+The web interface has been constructed with the use of django framework from python.In the section A of text file "Django_commands.txt" (attached) there are instructions in order to bring the development server to life.
  
  Two Machine Learning regression algorithms (SVR with RBF kernel and GradientBoosting) under the scikit-learn python framework were used in order to predict a ship's main engine fuel consumption (label = ME FUEL CONSUMPTION). The other 66 column names (displayed in dataset_attributes.txt) represent the training attributes. 
 
