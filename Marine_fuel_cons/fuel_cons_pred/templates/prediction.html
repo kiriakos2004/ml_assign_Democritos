@@ -11,7 +11,7 @@ prediction page
     <div class="container row align-items-center mx-auto">
         <div class="row justify-content-md-center">
             <p style="color: azure;">The selected trip duration is: {{duration}}<br>
-            The cumulative fuel consumption is: <span style="color: rgb(225, 4, 33); font-weight: 600;">{{com_cons}} </span>tons<br>
+            The cumulative fuel consumption is: <span style="color: rgb(225, 4, 33); font-weight: 600;">{{com_cons}} </span>Lts<br>
             <div id="chart_box" style="text-align: center;" class="rounded">
                 <canvas id="myChart" width="800" height="300"></canvas>
                 <script>
@@ -26,7 +26,7 @@ prediction page
                             labels: {{labels|safe}},
                             datasets: [{
                                 backgroundColor: gradient,
-                                label: 'Ships daily fuel consumption',
+                                label: 'Ships daily fuel consumption (Lts)',
                                 fill: true,
                                 data: {{results|safe}},
                                 borderWidth: 1,
