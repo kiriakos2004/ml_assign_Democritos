@@ -28,7 +28,8 @@ cv_SVR_scalled = [60.02976787, 18.71548023, 100.07843786, 20.17727846, 49.724171
  33.13548564, 335.7392413, 225.81269547, 34.89723575, 295.97521457]
 
 #List of Cross validation scores of tuned SupportVector regressor (scaled and MI):
-cv_SVR_scalled_MI = None
+cv_SVR_scalled_MI = [69.9465295, 17.67691193, 115.32946474, 21.44037226, 52.40346051,
+ 33.73679494, 303.6293414, 215.87229828, 41.78009534, 285.14716552]
 
 #List of Cross validation scores of of bagging strategy with kNN regressor (not scaled):
 cv_BkNN_not_scalled = [69.17924392, 67.58730978, 214.35967085, 119.46703081, 174.07680393,
