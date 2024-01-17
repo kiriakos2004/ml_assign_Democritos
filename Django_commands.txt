@@ -1,0 +1,59 @@
+"The startproject <projectname> command is a Django management command used to 
+create a new Django project with the specified <projectname>. 
+When you run this command in your terminal or command prompt, 
+Django will set up the basic directory structure and configuration files for your new project."
+
+django-admin startproject myproject
+
+
+"The runserver command is one of the most frequently used Django management commands. 
+It allows you to start the development server, 
+enabling you to run your Django application locally for testing and 
+development purposes."
+
+python manage.py runserver
+
+
+"Django projects are typically composed of multiple apps, 
+each responsible for handling a distinct part of the application. 
+An app is a self-contained component of a Django project that encapsulates 
+specific functionality or features.
+Once you are in the project's root directory, 
+run the startapp command followed by the name you want to give to your app. 
+For example, if you want to name your app "blog," the command would be:"
+
+python manage.py startapp blog
+
+
+"The makemigrations command is used to create new database migration files based 
+on the changes you have made to your models. When you define new models, add fields, 
+or modify existing fields in your Django app's models.py file, you need to create new 
+migrations to capture these changes."
+
+python manage.py makemigrations <appname>
+
+
+"The migrate command is used to apply database migrations and synchronize the database 
+schema with the current state of your models. It reads the migration files created by 
+makemigrations and executes the necessary SQL queries to create or modify database 
+tables, columns, and indices."
+
+python manage.py migrate
+
+
+"The showmigrations command displays a list of all the migrations for your project 
+and indicates which ones have been applied and which ones are pending. It's useful 
+for keeping track of the migration status of your app's models."
+
+python manage.py showmigrations
+
+
+"The createsuperuser command is a Django management command used to create a superuser 
+account for the Django admin interface. The superuser account has administrative privileges 
+and can access and manage all aspects of the Django admin site, including managing users, 
+groups, models, and other site content."
+
+python manage.py createsuperuser
+
+
+

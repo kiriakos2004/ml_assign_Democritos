@@ -6,10 +6,43 @@ prediction page
 {% endblock $}
 
 {% block page_body %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% include "partials/header.html" %}
 <div class="d-flex" id="main_div">
-    <p>the selected duration is: {{rpm}}</p>
+    <div class="container row align-items-center mx-auto">
+        <div class="row justify-content-md-center">
+            <p style="color: azure;">The selected trip duration is: {{duration}}<br>
+            The cumulative fuel consumption is: <span style="color: rgb(225, 4, 33); font-weight: 600;">{{com_cons}} </span>Lts<br>
+            <div id="chart_box" style="text-align: center;" class="rounded">
+                <canvas id="myChart" width="800" height="300"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                    gradient.addColorStop(0, '#052535cb');
+                    gradient.addColorStop(1, '#0ca1ebcb');
+                    Chart.defaults.global.defaultFontColor = "#0e3346cb";
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: {{labels|safe}},
+                            datasets: [{
+                                backgroundColor: gradient,
+                                label: 'Ships daily fuel consumption (Lts)',
+                                fill: true,
+                                data: {{results|safe}},
+                                borderWidth: 1,
+                                pointRadius: 1.5
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            tension: 0.1,
+                            maintainAspectRatio: false
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
 </div>
 {% include "partials/footer.html" %}
 {% endblock %}
-
