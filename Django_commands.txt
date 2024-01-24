@@ -3,10 +3,10 @@ Section  A: Commands to bring development server to life
 In order to bring django dev server to life and access the web page you have to do the following:
 a. Activate the virtual enviroment that has been constructed with the use of requirements.txt (see readme file).
 b. Put all the files of this repo inside the virtual enviroment folder.
-c. Change the file path (use absolute path) inside the file "ml_model.py" located in folder "fuel_cons_pred"
+c. Change the file path (use absolute path) inside the file "ml_model.py" located in folder "fuel_cons_pred".
 d. Navigate inside folder "Marine_fuel_cons" and run in CMD the command "python manage.py runserver", this command 
-will start the server and one can access the page in address "http://127.0.0.1:8000.
-e.In order to quit the server you should issue the command cntr+c
+will start the server and one can access the page in address "http://127.0.0.1:8000".
+e.In order to quit the server you should issue the command cntr+c.
 
 
 Section  B: Basic django commands
