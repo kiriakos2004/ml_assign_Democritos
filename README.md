@@ -20,6 +20,6 @@ The web interface has been constructed with the use of django framework from pyt
 
 The ml_training.py script is used in order to determine the best algorithm and tune its hyperparameters. The tuning process has been performed with the use of cross-validated grid-search over a parameter grid (splitting the dataset in 10 folds).The most suitable "tuned" algorithn is saved and then used in django framework in order to predict the main engine fuel consumption.
 
-User can inputs Trip duration (in days), Engine_RPM, Aft draft of ship, Fore draft of ship and Ship Heading. The service uses the saved trained model in order to return the cululative fuel oil consuption and a diagramm of the ships daily fuel oil consumption.
+User can input Trip duration (in days), Engine_RPM, Aft draft of ship, Fore draft of ship and Ship Heading. The service uses the saved trained model in order to return the cululative fuel oil consuption and a diagramm of the ships daily fuel oil consumption.
 
 The result_scores.py script can be used by the user to visualize the results of the tuning process of all algorithms (which can also be seen in result.txt file), in order to justify the final selection of "best" algorithm.
