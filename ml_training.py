@@ -59,7 +59,7 @@ X = X.fillna(X.mean())
 X_test = X_test.fillna(X_test.mean())
 
 #find out the 'mean' and 'std' of the different attributes and save it as stats.txt
-#we sill use mean value as default for all inputs that the user doesn't fill in form (or we will not put in form)
+#we will use mean value as default for all inputs that the user doesn't fill in form (or we will not put in form)
 def statistics():
     Statistics = X.describe().loc[['mean', 'std']]
     dict_temp = Statistics.to_dict('split')
