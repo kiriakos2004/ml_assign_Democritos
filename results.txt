@@ -21,8 +21,8 @@ max_depth value: 5
 l2_regularization set to: 0.001
 
 ** Final results on test dataset:
-	Maximum error: 169.59 Lt/hour
-	Mean absolute error: 18.87 Lt/hour
+	Maximum error: 169.59 Lt/min
+	Mean absolute error: 18.87 Lt/min
 
 	Cross validation scores with above hyperparameters (without scaling):
 	[3.20111253, 9.04694478, 64.95582918, 30.08941435, 19.72279766,
